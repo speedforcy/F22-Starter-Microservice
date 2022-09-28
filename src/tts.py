@@ -1,5 +1,5 @@
 import json
-from columbia_student_resource import ArtistResource
+from columbia_student_resource import ColumbiaStudentResource
 
 
 def t1():
