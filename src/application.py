@@ -1,7 +1,7 @@
 from flask import Flask, Response, request
 from datetime import datetime
 import json
-from columbia_student_resource import ColumbiaStudentResource
+from comment_resource import CommentResource
 from flask_cors import CORS
 
 # Create the Flask application object.
@@ -13,13 +13,13 @@ app = Flask(__name__,
 CORS(app)
 
 
-@app.get("/api/health")
-def get_health():
-    t = str(datetime.now())
+@app.get("/post/a0001")
+def get_post():
+    #t = str(datetime.now())
     msg = {
-        "name": "F22-Starter-Microservice",
-        "health": "Good",
-        "at time": t
+        "photo id": "a0001",
+        "user id": "a0001",
+        "comment id": "a0001"
     }
 
     # DFF TODO Explain status codes, content type, ... ...
@@ -28,10 +28,10 @@ def get_health():
     return result
 
 
-@app.route("/api/students/<uni>", methods=["GET"])
-def get_student_by_uni(uni):
+@app.route("/post/a0001/comment/", methods=["GET"])
+def get_comment(comment_id):
 
-    result = ColumbiaStudentResource.get_by_key(uni)
+    result = CommentResourceResource.get_by_key(comment_id)
 
     if result:
         rsp = Response(json.dumps(result), status=200, content_type="application.json")
